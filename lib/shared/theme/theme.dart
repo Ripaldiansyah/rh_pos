@@ -9,7 +9,7 @@ ThemeData getDefaultTheme() {
     colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
     appBarTheme: AppBarTheme(
       elevation: 0.6,
-      titleTextStyle: GoogleFonts.nunito(
+      titleTextStyle: GoogleFonts.inter(
         color: Colors.white,
       ),
       backgroundColor: primaryColor,
@@ -32,22 +32,23 @@ ThemeData getDefaultTheme() {
       color: textColor,
     ),
     textTheme: TextTheme(
-      titleSmall: GoogleFonts.nunito(
+      titleSmall: GoogleFonts.inter(
         color: textColor,
       ),
-      titleMedium: GoogleFonts.nunito(
+      titleMedium: GoogleFonts.inter(
         color: textColor,
       ),
-      titleLarge: GoogleFonts.nunito(
+      titleLarge: GoogleFonts.inter(
+        color: textColor,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyLarge: GoogleFonts.inter(
         color: textColor,
       ),
-      bodyLarge: GoogleFonts.nunito(
+      bodySmall: GoogleFonts.inter(
         color: textColor,
       ),
-      bodySmall: GoogleFonts.nunito(
-        color: textColor,
-      ),
-      bodyMedium: GoogleFonts.nunito(
+      bodyMedium: GoogleFonts.inter(
         color: textColor,
       ),
     ),

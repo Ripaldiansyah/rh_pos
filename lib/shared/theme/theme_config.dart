@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-// Color primaryColor = Color(0xff507246);
-Color primaryColor = const Color(0xff252627);
+Color primaryColor = const Color(0xff2D68FF);
 Color secondaryColor = const Color(0xff6c757d);
 Color disabledColor = const Color(0xff9fa5aa).withOpacity(0.6);
-Color textColor = const Color(0xff464646);
+Color textColor = Colors.black;
 // Color textColor = Colors.red;
 Color secondaryTextColor = const Color(0xff6c7592);
 Color scaffoldBackgroundColor = Colors.white;

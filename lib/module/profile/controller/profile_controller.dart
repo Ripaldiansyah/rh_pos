@@ -1,10 +1,10 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../mixin/login_mixin.dart';
-import '../state/login_state.dart';
+import '../mixin/profile_mixin.dart';
+import '../state/profile_state.dart';
 
-class LoginController extends StateNotifier<LoginState> with LoginMixin {
-  LoginController() : super(LoginState()) {
+class ProfileController extends StateNotifier<ProfileState> with ProfileMixin {
+  ProfileController() : super(ProfileState()) {
     initState();
   }
 

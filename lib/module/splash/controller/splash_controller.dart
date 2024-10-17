@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hyper_ui/core.dart';
+import 'package:hyper_ui/module/auth/login/view/login_view.dart';
 import 'package:hyper_ui/state_util.dart';
 import '../mixin/splash_mixin.dart';
 import '../state/splash_state.dart';
@@ -13,7 +15,7 @@ class SplashController extends StateNotifier<SplashState> with SplashMixin {
   initState() {
     //TO
     super.initState();
-    login();
+    redirectToIntro();
   }
 
   @override
@@ -22,14 +24,11 @@ class SplashController extends StateNotifier<SplashState> with SplashMixin {
     super.dispose();
   }
 
-  increment() {
-    state.counter++;
-    state = state.copyWith();
-  }
-
-  login() {
-    Future.delayed(Duration(milliseconds: 4000), () {
-      Get.offAll(LoginView());
+  redirectToIntro() {
+    Widget main =
+        DBService.get("token") == null ? LoginView() : DashboardView();
+    Future.delayed(Duration(milliseconds: 3500), () {
+      Get.offAll(main);
     });
   }
 }

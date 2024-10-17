@@ -1,9 +1,10 @@
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hyper_ui/core.dart';
 import '../mixin/dashboard_mixin.dart';
 import '../state/dashboard_state.dart';
 
-class DashboardController extends StateNotifier<DashboardState> with DashboardMixin {
+class DashboardController extends StateNotifier<DashboardState>
+    with DashboardMixin {
   DashboardController() : super(DashboardState()) {
     initState();
   }
@@ -20,10 +21,11 @@ class DashboardController extends StateNotifier<DashboardState> with DashboardMi
     super.dispose();
   }
 
-  increment() {
+  increment() async {
     state.counter++;
     state = state.copyWith();
+    await AuthService().logout();
+    Get.offAll(LoginView());
+    // print(isLogout);
   }
 }
-    
-    

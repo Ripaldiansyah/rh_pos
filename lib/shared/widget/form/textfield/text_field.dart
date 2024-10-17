@@ -73,7 +73,7 @@ class _QTextFieldState extends State<QTextField> {
   @override
   Widget build(BuildContext context) {
     Widget icon = Icon(
-      widget.suffixIcon ?? Icons.abc,
+      widget.suffixIcon ?? null,
     );
 
     if (widget.obscure) {
@@ -83,7 +83,7 @@ class _QTextFieldState extends State<QTextField> {
             visible = false;
             setState(() {});
           },
-          child: icon = const Icon(Icons.password),
+          child: icon = const Icon(Icons.visibility_off),
         );
       } else {
         icon = InkWell(
@@ -111,6 +111,7 @@ class _QTextFieldState extends State<QTextField> {
           labelText: widget.label,
           suffixIcon: icon,
           helperText: widget.helper,
+          fillColor: Color(0xffffffff),
           hintText: widget.hint,
         ),
         onChanged: (value) {

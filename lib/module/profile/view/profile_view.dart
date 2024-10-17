@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../provider/login_provider.dart';
+import '../provider/profile_provider.dart';
 
-class LoginView extends ConsumerWidget {
-  LoginView({super.key});
+class ProfileView extends ConsumerWidget {
+  ProfileView({super.key});
 
-  final loginExampleController = LoginProvider().create();
+  final profileExampleController = ProfileProvider().create();
 
   @override
   Widget build(BuildContext context, ref) {
-    final state = ref.watch(loginExampleController);
-    final controller = ref.watch(loginExampleController.notifier);
+    final state = ref.watch(profileExampleController);
+    final controller = ref.watch(profileExampleController.notifier);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Profile'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Login: ${state.counter}',
+            'Profile: ${state.counter}',
             style: const TextStyle(fontSize: 24),
           ),
           IconButton(

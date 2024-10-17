@@ -1,8 +1,9 @@
 {
     "modules": [
         "splash",
-        "login",
-        "dashboard"
+        "auth/login",
+        "dashboard",
+        "profile"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,
