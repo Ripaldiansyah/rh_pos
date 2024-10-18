@@ -25,8 +25,7 @@ class SplashController extends StateNotifier<SplashState> with SplashMixin {
   }
 
   redirectToIntro() {
-    Widget main =
-        DBService.get("token") == null ? LoginView() : DashboardView();
+    Widget main = DBService.get("token") == null ? LoginView() : MenuView();
     Future.delayed(Duration(milliseconds: 3500), () {
       Get.offAll(main);
     });

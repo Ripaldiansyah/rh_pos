@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hyper_ui/core.dart';
+import 'package:hyper_ui/module/menu/widget/card_category.dart';
+import 'package:hyper_ui/shared/widget/header/header.dart';
 import '../provider/profile_provider.dart';
 
 class ProfileView extends ConsumerWidget {
@@ -12,26 +15,38 @@ class ProfileView extends ConsumerWidget {
     final state = ref.watch(profileExampleController);
     final controller = ref.watch(profileExampleController.notifier);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Profile: ${state.counter}',
-            style: const TextStyle(fontSize: 24),
-          ),
-          IconButton(
-            onPressed: () => controller.increment(),
-            icon: const Icon(
-              Icons.add,
-              size: 24.0,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Header(),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 120,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.zero,
+                  clipBehavior: Clip.none,
+                  itemBuilder: (context, index) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      controller: ScrollController(),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CardCategory(),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

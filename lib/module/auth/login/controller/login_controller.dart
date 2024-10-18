@@ -61,7 +61,7 @@ class LoginController extends StateNotifier<LoginState> with LoginMixin {
 
       if (user.statusCode == 200) {
         saveLogin(user.data);
-        Get.offAll(DashboardView());
+        Get.offAll(MenuView());
       } else {
         se(user.data["message"]);
       }

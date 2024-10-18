@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: Get.navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: getDefaultTheme(),
-        home: SplashView(),
+        home: MenuView(),
       ),
     );
   }

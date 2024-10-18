@@ -1,5 +1,6 @@
 //#TEMPLATE reuseable_search_field
 import 'package:flutter/material.dart';
+import 'package:hyper_ui/core.dart';
 
 class QSearchField extends StatefulWidget {
   const QSearchField({
@@ -77,6 +78,22 @@ class _QSearchFieldState extends State<QSearchField> {
         maxLength: widget.maxLength,
         obscureText: widget.obscure,
         decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0), // Radius di sini
+            borderSide: BorderSide(color: Colors.grey), // Warna border
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            borderSide: BorderSide(color: Colors.grey, width: 1),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            borderSide: BorderSide(
+              color: primaryColor,
+              width: 1,
+            ), // Warna saat fokus
+          ),
+          fillColor: Colors.white,
           labelText: widget.label,
           prefixIcon: Icon(
             widget.prefixIcon,

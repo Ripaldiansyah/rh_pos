@@ -8,11 +8,11 @@ ThemeData getDefaultTheme() {
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
     appBarTheme: AppBarTheme(
-      elevation: 0.6,
+      elevation: 0.0,
       titleTextStyle: GoogleFonts.inter(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      backgroundColor: primaryColor,
+      backgroundColor: Color(0xfffafafa),
       iconTheme: const IconThemeData(
         color: Colors.white,
       ),
@@ -29,7 +29,7 @@ ThemeData getDefaultTheme() {
       labelColor: Colors.blueGrey[900],
     ),
     iconTheme: IconThemeData(
-      color: textColor,
+      color: primaryColor,
     ),
     textTheme: TextTheme(
       titleSmall: GoogleFonts.inter(
@@ -94,7 +94,7 @@ ThemeData getDefaultTheme() {
     ),
     cardTheme: CardTheme(
       elevation: 0.6,
-      color: const Color(0xfff6f6f6),
+      color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
         side: BorderSide(

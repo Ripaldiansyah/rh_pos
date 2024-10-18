@@ -3,7 +3,8 @@
         "splash",
         "auth/login",
         "dashboard",
-        "profile"
+        "profile",
+        "menu"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,
