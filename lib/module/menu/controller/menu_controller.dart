@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hyper_ui/core.dart';
 import 'package:hyper_ui/service/category_service/category_service.dart';
 import 'package:hyper_ui/service/products_service/products_service.dart';
 import '../mixin/menu_mixin.dart';
@@ -20,6 +21,7 @@ class MenuController extends StateNotifier<MenuState> with MenuMixin {
       if (_isActive) {
         await getTotalProducts();
         await getCategories();
+        await getProducts();
       }
     });
   }
@@ -49,14 +51,50 @@ class MenuController extends StateNotifier<MenuState> with MenuMixin {
     }
   }
 
-  onSelected(int newIndex) {
+  onSelected(int newIndex) async {
+    int id = state.categories![newIndex]["id"];
     state = state.copyWith(selectedIndex: newIndex);
+    if (newIndex != 0) {
+      final products = await CategoryService().getCategoryWithProducts(id);
+      if (_isActive) {
+        state = state.copyWith(getCategoryWithProducts: products);
+        state = state.copyWith(
+            productList: state.getCategoryWithProducts!.data!.products);
+      }
+    } else {
+      await getProducts();
+    }
+    print(state.isUpdate);
+    state = state.copyWith(
+        selectedIndex: newIndex, isUpdate: true, isLoadingProducts: false);
   }
 
   Future<void> getTotalProducts() async {
     final products = await ProductsService().getTotalProducts();
     if (_isActive) {
       state = state.copyWith(products: products);
+    }
+  }
+
+  checkOffset(ScrollController scrollController) async {
+    scrollController.addListener(() async {
+      var offset = scrollController.offset;
+      var maxOffset = scrollController.position.maxScrollExtent;
+      if (offset == maxOffset) {
+        state = state.copyWith(isLoadingProducts: true);
+        int page = state.page;
+        page++;
+        state = state.copyWith(page: page);
+        await getProducts();
+        state = state.copyWith(isLoadingProducts: false);
+      }
+    });
+  }
+
+  Future<void> getProducts() async {
+    if (_isActive) {
+      final products = await ProductsService().getProducts(state.page);
+      state = state.copyWith(productList: [...?state.productList, ...products]);
     }
   }
 }

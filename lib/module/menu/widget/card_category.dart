@@ -49,14 +49,7 @@ class CardCategory extends ConsumerWidget {
                                       Radius.circular(999.0),
                                     ),
                                   ),
-                                )
-                                    .animate(
-                                        onPlay: (controller) =>
-                                            controller.repeat())
-                                    .shimmer(
-                                      duration: 700.ms,
-                                      color: Colors.white,
-                                    ),
+                                ),
                                 const SizedBox(
                                   height: 10.0,
                                 ),
@@ -69,14 +62,7 @@ class CardCategory extends ConsumerWidget {
                                       Radius.circular(999.0),
                                     ),
                                   ),
-                                )
-                                    .animate(
-                                        onPlay: (controller) =>
-                                            controller.repeat())
-                                    .shimmer(
-                                      duration: 700.ms,
-                                      color: Colors.white,
-                                    ),
+                                ),
                                 const SizedBox(
                                   height: 5.0,
                                 ),
@@ -90,16 +76,15 @@ class CardCategory extends ConsumerWidget {
                                     ),
                                   ),
                                 )
-                                    .animate(
-                                        onPlay: (controller) =>
-                                            controller.repeat())
-                                    .shimmer(
-                                      duration: 700.ms,
-                                      color: Colors.white,
-                                    ),
                               ],
                             ),
-                          ),
+                          )
+                              .animate(
+                                  onPlay: (controller) => controller.repeat())
+                              .shimmer(
+                                duration: 700.ms,
+                                color: Colors.white,
+                              ),
                         ),
                       ),
                     ],
@@ -123,7 +108,9 @@ class CardCategory extends ConsumerWidget {
                   children: [
                     InkWell(
                       borderRadius: BorderRadius.circular(8.0),
-                      onTap: () => controller.onSelected(index),
+                      onTap: () async {
+                        await controller.onSelected(index);
+                      },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           side: BorderSide(

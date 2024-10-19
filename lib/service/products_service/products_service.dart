@@ -1,10 +1,10 @@
 import '../../core.dart';
 
 class ProductsService {
-  Future<List> getProducts() async {
+  Future<List> getProducts(int page) async {
     try {
       var res = await DioService.ds.get(
-        "$baseUrl/api/products",
+        "$baseUrl/api/products?page=${page}",
       );
       List products = res.data["data"]["data"];
       return products;
